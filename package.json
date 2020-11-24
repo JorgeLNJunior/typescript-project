@@ -1,5 +1,5 @@
 {
-  "name": "playlist-suggestion",
+  "name": "typescript-project",
   "version": "1.0.0",
   "description": "",
   "main": "build/src/start/server.js",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JorgeLNJunior/playlist-suggestion.git"
+    "url": "git+https://github.com/JorgeLNJunior/typescript-project.git"
   },
   "author": "JorgeLNJunior",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JorgeLNJunior/playlist-suggestion/issues"
+    "url": "https://github.com/JorgeLNJunior/typescript-project/issues"
   },
-  "homepage": "https://github.com/JorgeLNJunior/playlist-suggestion#readme",
+  "homepage": "https://github.com/JorgeLNJunior/typescript-project#readme",
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
