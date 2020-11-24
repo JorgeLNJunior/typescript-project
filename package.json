@@ -2,9 +2,9 @@
   "name": "typescript-project",
   "version": "1.0.0",
   "description": "",
-  "main": "build/src/start/server.js",
+  "main": "dist/src/start/server.js",
   "scripts": {
-    "build": "rimraf ./build && tsc",
+    "build": "rimraf ./dist && tsc",
     "start": "node .",
     "start:dev": "ts-node-dev --respawn --transpile-only --inspect -- ./src/start/server.ts",
     "lint": "eslint --fix --ext .js,.ts .",
