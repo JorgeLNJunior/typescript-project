@@ -9,4 +9,10 @@ describe('hello world', () => {
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('msg');
   });
+
+  test('should return 404 if route does not exist', async () => {
+    const response = await request(app).get('/notFound');
+
+    expect(response.status).toBe(404);
+  });
 });
