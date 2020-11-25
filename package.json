@@ -7,7 +7,8 @@
     "build": "rimraf ./dist && tsc",
     "start": "node .",
     "start:dev": "ts-node-dev --respawn --transpile-only --inspect -- ./src/start/server.ts",
-    "lint": "eslint --fix --ext .js,.ts .",
+    "lint": "eslint --ext .js,.ts .",
+    "lint:fix": "eslint --fix --ext .js,.ts .",
     "test": "jest --passWithNoTests --runInBand",
     "test:coverage": "npm run test -- --coverage --silent",
     "test:ci": "npm run test:coverage && coveralls < __tests__/coverage/lcov.info"
