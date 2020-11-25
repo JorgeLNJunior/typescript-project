@@ -8,7 +8,8 @@
         "eslint:recommended",
         "plugin:prettier/recommended",
         "prettier/@typescript-eslint",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "plugin:jest/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -18,7 +19,8 @@
     "plugins": [
         "prettier",
         "@typescript-eslint",
-        "simple-import-sort"
+        "simple-import-sort",
+        "jest"
     ],
     "ignorePatterns": "build",
     "rules": {
