@@ -22,7 +22,7 @@
         "simple-import-sort",
         "jest"
     ],
-    "ignorePatterns": "build",
+    "ignorePatterns": "dist",
     "rules": {
       "prettier/prettier": "error",
       "simple-import-sort/imports": "warn",
