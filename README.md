@@ -1,14 +1,14 @@
-<div align="center">
+<div align="center" id="title">
   <h1>Typescript Project</h1>
 </div>
 
-<div align="center">
+<div align="center" id="short-description">
 
 Projeto Typescript estruturado e configurado usando algumas boas práticas.
 
 </div>
 
-<div align="center">
+<div align="center" id="badges">
 
 [![Travis Build](https://travis-ci.com/JorgeLNJunior/typescript-project.svg?branch=master)](https://travis-ci.com/github/JorgeLNJunior/typescript-project)
 [![Coverage Status](https://coveralls.io/repos/github/JorgeLNJunior/typescript-project/badge.svg?branch=master&service=github)](https://coveralls.io/github/JorgeLNJunior/typescript-project?branch=master)
@@ -34,15 +34,15 @@ Projeto Typescript estruturado e configurado usando algumas boas práticas.
 * [Licença](https://github.com/JorgeLNJunior/typescript-project#licen%C3%A7a)
 
 ## Sobre o Projeto
-Projeto estruturado e configurado usando Typescript, Express, Jest, Travis CI, Coveralls, entre outros. Além de boas práticas como uso do ESLint + Prettier e CommitLint.
-
+Projeto estruturado e configurado usando Typescript, Express, Jest, Travis CI, TypeORM, Swagger entre outros. Além de boas práticas como uso do ESLint + Prettier e CommitLint.
 
 ## Rotas
 
 Informações básicas sobre as rotas da aplicação.
-| HTTP   | Rota                             | Descrição                    | Autenticação |
-|--------|----------------------------------|------------------------------|--------------|
-| GET    | /                                | hello world                  | não          |
+| HTTP   | Rota                        | Descrição                    | Autenticação |
+|--------|-----------------------------|------------------------------|--------------|
+| GET    | /users                      | retorna todos os usuários    | não          |
+| GET    | /docs                       | documentação da API          | não          |
 
 ## Tecnologias
 Este projeto foi construído com as seguintes tecnologias:
@@ -51,6 +51,8 @@ Este projeto foi construído com as seguintes tecnologias:
 - [Typescript »](https://www.typescriptlang.org/)
 - [Jest »](https://jestjs.io)
 - [Travis CI »](https://travis-ci.org)
+- [Swagger »](https://swagger.io/)
+- [TypeORM »](https://typeorm.io/#/)
 
 ## Instalação e configuração
 ### Requisitos
@@ -69,4 +71,3 @@ Este projeto foi construído com as seguintes tecnologias:
 
 ## Licença
 Projeto sob a licença [MIT »](https://github.com/JorgeLNJunior/typescript-project/blob/master/LICENSE.md)
-
