@@ -6,8 +6,7 @@ node_js:
 services:
   - mysql
 env:
-  - DB_USER=travis
-  - DB_PASS=
+  - DB_USER=travis DB_PASS=
 before_install:
   - mysql -e 'CREATE DATABASE test;'
 script:
