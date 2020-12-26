@@ -3,28 +3,52 @@ info:
   title: Typescript project
   description: OpenApi Docs
   version: '1.0'
+  contact:
+    name: Jorge Junior
+    email: jorgelnjunior@gmail.com
+    url: https://github.com/JorgeLNJunior
+  license:
+    name: MIT
+    url: https://github.com/JorgeLNJunior/typescript-project/blob/master/LICENSE.md
 servers:
-  - url: https://localhost:3000
-
+  - url: http://localhost:3000
+    description: local development server
 paths:
-  /:
+  /users:
     get:
-      summary: Hello World
-      description: 'Hello World route'
+      summary: Get Users
+      description: 'Return a list with all created users.'
+      tags:
+        - "users"
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref:  '#/components/schemas/hello-response'
-
+                $ref:  '#/components/schemas/users-response'
 components:
   schemas:
-    hello-response:
+    users-response:
       type: object
       properties:
-        msg:
-          type: string
-          default: hello world
-
+        status:
+          type: integer
+          example: 200
+        users:
+          type: array
+          items:
+            type: object
+            properties:
+              uuid:
+                type: string
+                example: 2f11909a-9f5d-4320-bf73-3302d7bb870e
+              name:
+                type: string
+                example: John
+              createdAt:
+                type: string
+                example: 2020-10-26T20:40:04.000Z
+              updatedAt:
+                type: string
+                example: 2020-11-10T20:35:02.000Z

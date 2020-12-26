@@ -1,4 +1,6 @@
 import 'dotenv/config';
+import 'reflect-metadata';
+import './database';
 
 import cors from 'cors';
 import express, { Request, Response } from 'express';
@@ -23,10 +25,13 @@ app.use(helmet());
 app.use(logger);
 app.use(hateLimit({ max: process.env.NODE_ENV === 'test' ? 200 : 30 }));
 app.use(router);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 app.use((req: Request, res: Response) => {
-  return res.status(404).json({ error: 'route not found' });
+  return res.status(404).json({
+    status: 404,
+    error: 'route not found',
+  });
 });
 
 export default app;
