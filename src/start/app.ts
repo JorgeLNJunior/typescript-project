@@ -1,8 +1,8 @@
-import 'dotenv/config';
 import 'reflect-metadata';
 import './database';
 
 import cors from 'cors';
+import { config } from 'dotenv';
 import express, { Request, Response } from 'express';
 import hateLimit from 'express-rate-limit';
 import helmet from 'helmet';
@@ -14,6 +14,7 @@ import YML from 'yamljs';
 import { logger } from '../config/logger';
 import router from '../routes';
 
+config({ path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env' });
 const swaggerDoc = YML.load(resolve('src/config/swagger.yml'));
 
 const app = express();
