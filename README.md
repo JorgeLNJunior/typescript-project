@@ -1,4 +1,7 @@
 <div align="center" id="title">
+
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg" height="130" img/>
+
   <h1>Typescript Project</h1>
 </div>
 
