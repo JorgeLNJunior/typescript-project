@@ -1,4 +1,7 @@
 <div align="center" id="title">
+
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg" height="130" img/>
+
   <h1>Typescript Project</h1>
 </div>
 
@@ -34,7 +37,7 @@ Projeto Typescript estruturado e configurado usando algumas boas práticas.
 * [Licença](https://github.com/JorgeLNJunior/typescript-project#licen%C3%A7a)
 
 ## Sobre o Projeto
-Projeto estruturado e configurado usando Typescript, Express, Jest, Travis CI, TypeORM, Swagger entre outros. Além de boas práticas como uso do ESLint + Prettier e CommitLint.
+Projeto estruturado e configurado usando Typescript, Express, Jest, Travis CI, TypeORM, Swagger, Winston entre outros. Além de boas práticas como uso do ESLint + Prettier e CommitLint.
 
 ## Rotas
 
@@ -48,26 +51,28 @@ Informações básicas sobre as rotas da aplicação.
 Este projeto foi construído com as seguintes tecnologias:
 - [Node.js »](https://nodejs.org)
 - [Express.js »](https://expressjs.com)
-- [Typescript »](https://www.typescriptlang.org/)
+- [Typescript »](https://www.typescriptlang.org)
 - [Jest »](https://jestjs.io)
 - [Travis CI »](https://travis-ci.org)
-- [Swagger »](https://swagger.io/)
-- [TypeORM »](https://typeorm.io/#/)
+- [Swagger »](https://swagger.io)
+- [TypeORM »](https://typeorm.io)
 
 ## Instalação e configuração
 ### Requisitos
   - [Node.js »](https://nodejs.org/en/download) na sua versão 12.x
+  - Um Banco de dados suportado pelo [TypeORM »](https://typeorm.io)
 
 ### Opcional
-  - Contas nas plataformas [Travis »](https://travis-ci.com/) e
-  [Coveralls »](https://coverallsio/)
+  - Contas nas plataformas [Travis »](https://travis-ci.com) e
+  [Coveralls »](https://coveralls.io)
 
 ### Instalação
-  1. Clone o projeto: `git clone https://github.com/JorgeLNJunior/typescript-project.git`
+  1. Clone o projeto: `git clone https://github.com/JorgeLNJunior/typescript-project.git` ou clique no botão `Use this template` no GitHub
   2. Instale as dependências: `npm i`
-  3. Renomeie o arquivo `.env.example` para `.env`
-  4. Para iniciar a aplicação execute `npm start:dev`, para os testes execute `npm test`
-  5. Altere o projeto como desejar
+  3. Renomeie os arquivos `.env.example` e `.env.test.example` para `.env` e `.env.test` respectivamente
+  4. Execute as migrations com o comando `npm run typeorm migration:run`
+  5. Para iniciar a aplicação execute `npm start:dev`, para os testes execute `npm test`
+  6. Altere o projeto como desejar
 
 ## Licença
 Projeto sob a licença [MIT »](https://github.com/JorgeLNJunior/typescript-project/blob/master/LICENSE.md)
