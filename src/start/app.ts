@@ -11,6 +11,7 @@ import { resolve } from 'path';
 import swaggerUi from 'swagger-ui-express';
 import YML from 'yamljs';
 
+import { errorHandler } from '../app/middlewares/error.handler';
 import { logger } from '../config/logger';
 import router from '../routes';
 
@@ -26,6 +27,7 @@ app.use(helmet());
 app.use(logger);
 app.use(hateLimit({ max: process.env.NODE_ENV === 'test' ? 200 : 30 }));
 app.use(router);
+app.use(errorHandler);
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 app.use((req: Request, res: Response) => {
