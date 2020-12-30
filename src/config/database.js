@@ -1,7 +1,8 @@
-import { config } from 'dotenv';
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { config } = require('dotenv');
 config({ path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env' });
 
-export default {
+module.exports = {
   type: process.env.DB_TYPE || 'mysql',
   host: process.env.DB_HOST || 'localhost',
   port: process.env.DB_PORT || 3306,
@@ -10,9 +11,15 @@ export default {
   database: process.env.DB_NAME || 'test',
   synchronize: false,
   logging: false,
-  entities: ['src/app/entity/**/*.ts'],
+  entities: [
+    process.env.NODE_ENV === 'production' ? '**/*.entity.js' : '**/*.entity.ts',
+  ],
   migrationsTableName: 'typeorm_migrations',
-  migrations: ['src/database/migration/**/*.ts'],
+  migrations: [
+    process.env.NODE_ENV === 'production'
+      ? 'src/database/migration/**/*.js'
+      : 'src/database/migration/**/*.ts',
+  ],
   cli: {
     entitiesDir: 'src/app/entity',
     migrationsDir: 'src/database/migration',
