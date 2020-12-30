@@ -21,13 +21,15 @@ const swaggerDoc = YML.load(resolve('src/config/swagger.yml'));
 
 const app = express();
 
-app.use(monitor);
+if (process.env.NODE_ENV !== 'test') {
+  app.use(monitor);
+  app.use(hateLimit({ max: 30 }));
+}
 app.use(express.json());
 app.use(express.static(path.resolve('public')));
 app.use(cors());
 app.use(helmet());
 app.use(logger);
-app.use(hateLimit({ max: process.env.NODE_ENV === 'test' ? 200 : 30 }));
 app.use(router);
 app.use(errorHandler);
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
