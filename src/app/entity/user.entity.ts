@@ -1,4 +1,7 @@
+import bcrypt from 'bcrypt';
 import {
+  BeforeInsert,
+  BeforeUpdate,
   Column,
   CreateDateColumn,
   Entity,
@@ -14,9 +17,22 @@ export class User {
   @Column()
   name: string;
 
+  @Column()
+  email: string;
+
+  @Column()
+  password: string;
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
+  comparePassword: () => void;
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  async hashPassword(): Promise<void> {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
 }

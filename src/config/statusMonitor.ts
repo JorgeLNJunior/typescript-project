@@ -7,6 +7,7 @@ const config = require('../config/database');
 
 export const monitor = statusMonitor({
   path: '/admin/status',
+  ignoreStartsWith: 'status',
   healthChecks: [
     {
       host: process.env.HOST || 'localhost',
