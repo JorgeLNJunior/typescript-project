@@ -1,33 +1,27 @@
-import bcrypt from 'bcrypt';
 import { NextFunction, Request, Response } from 'express';
-import { getRepository } from 'typeorm';
 
-import { sign } from '../auth/jwt';
-import { User } from '../entity/user.entity';
 import { BadRequestError } from '../error/badRequest.error';
-import { UnauthorizedError } from '../error/unauthorized.error';
+import { AuthService } from '../service/auth.service';
+import { AuthValidator } from '../validator/auth.validator';
 import { UserValidator } from '../validator/user.validator';
 
 export class AuthController {
-  private userValidator = new UserValidator();
-
   async register(
     req: Request,
     res: Response,
     next: NextFunction,
   ): Promise<Response<unknown> | undefined> {
     try {
-      const { error, value } = await this.userValidator.create(req.body);
+      const userValidator = new UserValidator();
+      const authService = new AuthService();
+
+      const { error, value } = userValidator.create(req.body);
 
       if (error) throw new BadRequestError([error.message]);
 
-      const userRepository = getRepository(User);
+      const user = await authService.register(value);
 
-      const user = userRepository.create(value);
-
-      const result = await userRepository.save(user);
-
-      return res.status(201).json({ user: result });
+      return res.status(201).json({ user: user });
     } catch (error) {
       next(error);
     }
@@ -39,18 +33,14 @@ export class AuthController {
     next: NextFunction,
   ): Promise<Response<unknown> | undefined> {
     try {
-      const { email, password } = req.body;
+      const authService = new AuthService();
+      const authValidator = new AuthValidator();
 
-      const userRepository = getRepository(User);
-      const user = await userRepository.findOne({ where: { email: email } });
+      const { error, value } = authValidator.login(req.body);
 
-      if (!user) throw new BadRequestError(['user not found']);
+      if (error) throw new BadRequestError([error.message]);
 
-      const isSamePassword = await bcrypt.compare(password, user.password);
-
-      if (!isSamePassword) throw new UnauthorizedError(['invalid credentials']);
-
-      const token = sign(user);
+      const token = await authService.login(value);
 
       return res.json({ token });
     } catch (error) {

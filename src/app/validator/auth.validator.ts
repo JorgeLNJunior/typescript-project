@@ -1,11 +1,10 @@
 import Joi from 'joi';
 
-export class UserValidator {
-  create(body: unknown): Joi.ValidationResult {
+export class AuthValidator {
+  login(body: unknown): Joi.ValidationResult {
     const schema = Joi.object({
-      name: Joi.string().required(),
       email: Joi.string().email().required(),
-      password: Joi.string().min(6).required(),
+      password: Joi.string().required(),
     });
 
     return schema.validate(body, { stripUnknown: true });

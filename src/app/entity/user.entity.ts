@@ -28,11 +28,10 @@ export class User {
 
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
-  comparePassword: () => void;
 
   @BeforeInsert()
   @BeforeUpdate()
-  async hashPassword(): Promise<void> {
+  protected async hashPassword(): Promise<void> {
     this.password = await bcrypt.hash(this.password, 10);
   }
 }
