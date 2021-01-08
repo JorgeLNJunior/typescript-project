@@ -26,6 +26,7 @@ describe('Users (e2e)', () => {
 
   afterAll(async () => {
     await connection.undoLastMigration();
+    await connection.query('DROP TABLE IF EXISTS typeorm_migrations');
     await connection.close();
   });
 });

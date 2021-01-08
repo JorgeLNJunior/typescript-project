@@ -15,11 +15,7 @@ module.exports = {
     process.env.NODE_ENV === 'production' ? '**/*.entity.js' : '**/*.entity.ts',
   ],
   migrationsTableName: 'typeorm_migrations',
-  migrations: [
-    process.env.NODE_ENV === 'production'
-      ? 'src/database/migration/**/*.js'
-      : 'src/database/migration/**/*.ts',
-  ],
+  migrations: ['src/database/migration/**/*.ts'],
   cli: {
     entitiesDir: 'src/app/entity',
     migrationsDir: 'src/database/migration',
