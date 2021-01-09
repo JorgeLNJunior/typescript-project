@@ -2,7 +2,7 @@
   "name": "typescript-project",
   "version": "1.1.1",
   "description": "",
-  "main": "dist/start/server.js",
+  "main": "dist/src/start/server.js",
   "scripts": {
     "build": "rimraf ./dist && tsc",
     "start": "NODE_ENV=production node .",
