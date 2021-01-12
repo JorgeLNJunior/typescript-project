@@ -25,6 +25,7 @@ module.exports = {
     '!<rootDir>/src/start/**',
     '!<rootDir>/src/config/**',
     '!<rootDir>/src/database/migration/**',
+    '!<rootDir>/src/@types/**',
   ],
 
   // The directory where Jest should output its coverage files
@@ -188,4 +189,6 @@ module.exports = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
+
+  testTimeout: 10000,
 };
