@@ -12,7 +12,7 @@ import swaggerUi from 'swagger-ui-express';
 import YML from 'yamljs';
 
 import { errorHandler } from '../app/middlewares/error.handler';
-import { logger } from '../config/logger';
+import { httpLogger } from '../config/logger';
 import router from '../routes';
 
 config({ path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env' });
@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(express.static(path.resolve('public')));
 app.use(cors());
 app.use(helmet());
-app.use(logger);
+app.use(httpLogger);
 app.use(router);
 app.use(errorHandler);
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
