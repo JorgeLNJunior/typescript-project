@@ -15,3 +15,8 @@ export const httpLogger = expressWinston.logger({
     '/docs/swagger-ui-bundle.js',
   ],
 });
+
+export const errorLogger = winston.createLogger({
+  transports: new winston.transports.File({ filename: 'logs/error/logs.json' }),
+  format: winston.format.json(),
+});
