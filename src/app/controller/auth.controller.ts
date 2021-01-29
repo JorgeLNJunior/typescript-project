@@ -21,7 +21,7 @@ export class AuthController {
 
       const user = await authService.register(value);
 
-      return res.status(201).json({ user: user });
+      return res.status(201).json({ status: 200, user: user });
     } catch (error) {
       next(error);
     }
@@ -42,7 +42,7 @@ export class AuthController {
 
       const token = await authService.login(value);
 
-      return res.json({ token });
+      return res.json({ status: 200, token: token });
     } catch (error) {
       next(error);
     }

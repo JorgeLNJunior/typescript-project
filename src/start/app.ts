@@ -11,9 +11,8 @@ import { resolve } from 'path';
 import swaggerUi from 'swagger-ui-express';
 import YML from 'yamljs';
 
-import { errorHandler } from '../app/middlewares/error.handler';
-import { logger } from '../config/logger';
-import { monitor } from '../config/statusMonitor';
+import { errorHandler } from '../app/middleware/error.handler';
+import { httpLogger } from '../config/logger';
 import router from '../routes';
 
 config({ path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env' });
@@ -22,14 +21,13 @@ const swaggerDoc = YML.load(resolve('src/config/swagger.yml'));
 const app = express();
 
 if (process.env.NODE_ENV !== 'test') {
-  app.use(monitor);
   app.use(hateLimit({ max: 30 }));
 }
 app.use(express.json());
 app.use(express.static(path.resolve('public')));
 app.use(cors());
 app.use(helmet());
-app.use(logger);
+app.use(httpLogger);
 app.use(router);
 app.use(errorHandler);
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
