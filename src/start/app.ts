@@ -11,7 +11,7 @@ import { resolve } from 'path';
 import swaggerUi from 'swagger-ui-express';
 import YML from 'yamljs';
 
-import { errorHandler } from '../app/middlewares/error.handler';
+import { errorHandler } from '../app/middleware/error.handler';
 import { httpLogger } from '../config/logger';
 import router from '../routes';
 
