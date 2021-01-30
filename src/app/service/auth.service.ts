@@ -14,9 +14,10 @@ export class AuthService {
     return await usersRepository.save(user);
   }
 
-  async login(loginData: LoginData): Promise<string> {
+  async login(loginData: UserCredential): Promise<string> {
     const { email, password } = loginData;
     const userRepository = getRepository(User);
+
     const user = await userRepository.findOne({ where: { email: email } });
 
     if (!user) throw new BadRequestError(['user not found']);
@@ -31,7 +32,7 @@ export class AuthService {
   }
 }
 
-type LoginData = {
+type UserCredential = {
   email: string;
   password: string;
 };
