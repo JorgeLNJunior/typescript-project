@@ -5,6 +5,7 @@ import { User } from '../src/app/entity/user.entity';
 import app from '../src/start/app';
 import { UserFactory } from './factory/user.factory';
 import { generateToken } from './helpers/auth.helper';
+import { finishConnection } from './helpers/database.helper';
 
 describe('Users (e2e)', () => {
   let connection: Connection;
@@ -49,8 +50,6 @@ describe('Users (e2e)', () => {
   });
 
   afterAll(async () => {
-    await connection.undoLastMigration();
-    await connection.query('DROP TABLE IF EXISTS typeorm_migrations');
-    await connection.close();
+    await finishConnection(connection);
   });
 });
