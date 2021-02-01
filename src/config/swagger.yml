@@ -15,9 +15,35 @@ servers:
     description: local development server
 
 paths:
+  /register:
+    post:
+      summary: Register a user
+      description: Register a new user, send a message in the user email and return their data
+      tags:
+        - "authentication"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/user-register-body"
+      responses:
+        "201":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/user-register-response"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/bad-request-error"
+
   /login:
     post:
-      description: authenticate a user and return a jwt token
+      description: Authenticate a user and return a jwt token
       summary: Authenticate a user
       tags:
         - "authentication"
@@ -48,36 +74,10 @@ paths:
               schema:
                 $ref: "#/components/schemas/unauthorized-error"
 
-  /register:
-    post:
-      summary: Register a user
-      description: Register a new user and return his data
-      tags:
-        - "authentication"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/user-register-body"
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/user-register-response"
-        "400":
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/bad-request-error"
-
   /users:
     get:
       summary: Get Users
-      description: "Return a list with all created users."
+      description: Return a list with all created users.
       tags:
         - "users"
       security:
