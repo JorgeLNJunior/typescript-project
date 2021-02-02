@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 
-export class MailSender {
-  constructor(options: MailSenderOptions) {
+export class EmailService {
+  constructor(options: EmailServiceOptions) {
     this.userEmail = options.userEmail;
     this.userName = options.userName;
   }
@@ -33,7 +33,7 @@ export class MailSender {
   }
 }
 
-interface MailSenderOptions {
+interface EmailServiceOptions {
   userName: string;
   userEmail: string;
 }
