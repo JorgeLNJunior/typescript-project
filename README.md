@@ -61,11 +61,12 @@ Este projeto foi construído com as seguintes tecnologias:
 
 ## Instalação e configuração
 ### Requisitos
-  - [Node.js »](https://nodejs.org/en/download) na sua versão 12.x
+  - [Node.js »](https://nodejs.org/en/download) na sua versão lts
   - Um Banco de dados suportado pelo [TypeORM »](https://typeorm.io)
 
 ### Opcional
   - Conta na plataforma [Codecov »](https://codecov.io)
+  - Uma [API KEY »](https://docs.github.com/en/actions/reference/encrypted-secrets) do GitHub configurada no repositório para a action `dependabot-auto-merge`
 
 ### Instalação
   1. Clone o projeto: `git clone https://github.com/JorgeLNJunior/typescript-project.git` ou clique no botão `Use this template` no GitHub
