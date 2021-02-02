@@ -3,6 +3,7 @@ import { Connection, createConnection } from 'typeorm';
 
 import app from '../src/start/app';
 import { UserFactory } from './factory/user.factory';
+import { finishConnection } from './helpers/database.helper';
 
 describe('Register (e2e)', () => {
   let connection: Connection;
@@ -62,8 +63,6 @@ describe('Register (e2e)', () => {
   });
 
   afterAll(async () => {
-    await connection.undoLastMigration();
-    await connection.query('DROP TABLE IF EXISTS typeorm_migrations');
-    await connection.close();
+    await finishConnection(connection);
   });
 });
