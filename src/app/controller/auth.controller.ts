@@ -22,13 +22,15 @@ export class AuthController {
 
       const user = await authService.register(value);
 
-      const mail = new EmailService({
-        userEmail: user.email,
-        userName: user.name,
-      });
-      await mail.send();
+      if (process.env.NODE_ENV !== 'test') {
+        const mail = new EmailService({
+          userEmail: user.email,
+          userName: user.name,
+        });
+        await mail.send();
+      }
 
-      return res.status(201).json({ status: 200, user: user });
+      return res.status(201).json({ status: 201, user: user });
     } catch (error) {
       next(error);
     }
