@@ -15,12 +15,19 @@ import { errorHandler } from '../app/middleware/error.handler';
 import { httpLogger } from '../config/logger';
 import router from '../routes';
 
-config({ path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env' });
-const swaggerDoc = YML.load(resolve('src/config/swagger.yml'));
+const NODE_ENV = process.env.NODE_ENV;
+
+config({ path: NODE_ENV === 'test' ? '.env.test' : '.env' });
+
+const swaggerDevPath = resolve('src/config/swagger.yml');
+const swaggerProdPath = resolve('dist/config/swagger.yml');
+const swaggerDoc = YML.load(
+  NODE_ENV === 'production' ? swaggerProdPath : swaggerDevPath,
+);
 
 const app = express();
 
-if (process.env.NODE_ENV !== 'test') {
+if (NODE_ENV !== 'test') {
   app.use(hateLimit({ max: 30 }));
 }
 app.use(express.json());

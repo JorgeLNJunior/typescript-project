@@ -73,7 +73,7 @@ Este projeto foi construído com as seguintes tecnologias:
   2. Instale as dependências: `npm i`
   3. Renomeie o arquivo `.env.example` para `.env`
   4. Execute as migrations com o comando `npm run typeorm migration:run`
-  5. Para iniciar a aplicação execute `npm start:dev`, para os testes execute `npm test`
+  5. Para iniciar a aplicação execute `npm start:dev` ou `npm run docker:up`. Para os testes execute `npm test`
 
 ## Licença
 Projeto sob a licença [MIT »](https://github.com/JorgeLNJunior/typescript-project/blob/master/LICENSE.md)

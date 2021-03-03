@@ -7,17 +7,18 @@ module.exports = {
   host: process.env.DB_HOST || 'localhost',
   port: process.env.DB_PORT || 3306,
   username: process.env.DB_USER || 'root',
-  password: process.env.DB_PASS || '',
+  password: process.env.DB_PASS || 'root',
   database: process.env.DB_NAME || 'test',
   synchronize: false,
   logging: false,
   entities: [
     process.env.NODE_ENV === 'production' ? '**/*.entity.js' : '**/*.entity.ts',
   ],
+  migrationsRun: process.env.NODE_ENV === 'production' ? true : false,
   migrationsTableName: 'typeorm_migrations',
   migrations: [
     process.env.NODE_ENV === 'production'
-      ? 'dist/src/database/migration/**/*.js'
+      ? 'dist/database/migration/**/*.js'
       : 'src/database/migration/**/*.ts',
   ],
   cli: {
