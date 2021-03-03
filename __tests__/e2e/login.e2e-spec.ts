@@ -1,7 +1,7 @@
 import request from 'supertest';
 import { Connection, createConnection } from 'typeorm';
 
-import app from '../src/start/app';
+import app from '../../src/start/app';
 import { UserFactory } from './factory/user.factory';
 import { finishConnection } from './helpers/database.helper';
 
@@ -46,6 +46,28 @@ describe('Login (e2e)', () => {
     });
 
     expect(status).toBe(400);
+  });
+
+  test('/login (POST) should not authenticate a user without email', async () => {
+    const user = UserFactory.aUser().withoutEmail().build();
+
+    const { body, status } = await request(app).post('/login').send({
+      password: user.password,
+    });
+
+    expect(status).toBe(400);
+    expect(body).toHaveProperty('errors');
+  });
+
+  test('/login (POST) should not authenticate a user without password', async () => {
+    const user = UserFactory.aUser().withoutPassword().build();
+
+    const { body, status } = await request(app).post('/login').send({
+      email: user.email,
+    });
+
+    expect(status).toBe(400);
+    expect(body).toHaveProperty('errors');
   });
 
   afterAll(async () => {

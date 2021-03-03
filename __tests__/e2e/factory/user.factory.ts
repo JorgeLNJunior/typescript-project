@@ -1,7 +1,7 @@
 import Faker from 'faker';
 import { getRepository } from 'typeorm';
 
-import { User } from '../../src/app/entity/user.entity';
+import { User } from '../../../src/app/entity/user.entity';
 
 export class UserFactory {
   private user: UserData = {

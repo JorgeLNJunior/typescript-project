@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 
 import { BadRequestError } from '../error/badRequest.error';
-import { EmailService } from '../mail/email.service';
 import { AuthService } from '../service/auth.service';
 import { AuthValidator } from '../validator/auth.validator';
 import { UserValidator } from '../validator/user.validator';
@@ -21,14 +20,6 @@ export class AuthController {
       if (error) throw new BadRequestError([error.message]);
 
       const user = await authService.register(value);
-
-      if (process.env.NODE_ENV !== 'test') {
-        const mail = new EmailService({
-          userEmail: user.email,
-          userName: user.name,
-        });
-        await mail.send();
-      }
 
       return res.status(201).json({ status: 201, user: user });
     } catch (error) {

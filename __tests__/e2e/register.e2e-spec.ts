@@ -1,7 +1,7 @@
 import request from 'supertest';
 import { Connection, createConnection } from 'typeorm';
 
-import app from '../src/start/app';
+import app from '../../src/start/app';
 import { UserFactory } from './factory/user.factory';
 import { finishConnection } from './helpers/database.helper';
 

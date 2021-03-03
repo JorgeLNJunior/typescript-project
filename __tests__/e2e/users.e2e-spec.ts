@@ -1,8 +1,8 @@
 import request from 'supertest';
 import { Connection, createConnection } from 'typeorm';
 
-import { User } from '../src/app/entity/user.entity';
-import app from '../src/start/app';
+import { User } from '../../src/app/entity/user.entity';
+import app from '../../src/start/app';
 import { UserFactory } from './factory/user.factory';
 import { generateToken } from './helpers/auth.helper';
 import { finishConnection } from './helpers/database.helper';
